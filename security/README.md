@@ -30,6 +30,7 @@ This code sample uses the HTTP Trigger functionality of Azure Functions. If not 
 
 ## Notes
 
+- Make sure you add your domain to the CORS section of Azure Functions Dashboard - otherwise all requests will be rejected. 
 - Your Azure Functions App, like all serverless options, will cold-start if not invoked regularly. This can add 10 seconds or more of delay in the token generation. In this case, you may want to create a scheduled trigger that keeps your function "warm". Alternatively, you could use a hosted server instead of a serverless framework.
 
 - Azure Functions supports continuous deployment via integrations with e.g. Github/Bitbucket. You should almost certainly use this to minimise devops effort as well as version mismatches.

@@ -1,0 +1,40 @@
+#BotChatGoesHere {
+    display: none;
+    height: 550px;
+    width: 400px;
+    border: 1px solid whitesmoke;
+    box-shadow: rgba(0, 0, 0, 0) 0px 3px 12px;
+    position: fixed;
+    padding: 0px;
+    top: auto;
+    overflow: auto;
+    background: white;
+    bottom: 70pt;
+    left: 15pt;
+    z-index: 2147483646;
+}
+
+.floatingBtn {
+    background: none;
+    border-radius: 50%;
+    bottom: 18pt;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 12px;
+    height: 45pt;
+    padding: 0px;
+    position: fixed;
+    left: 20pt;
+    top: auto;
+    width: 45pt;
+    z-index: 200;
+    cursor: pointer;
+}
+
+.closeButton {
+    border: none;
+    float: right;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #2c214a !important;
+}
