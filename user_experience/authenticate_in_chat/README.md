@@ -18,9 +18,12 @@ The method we are going to use relies on email + OTP (one time password) to auth
 1. We prompt for the email early in the chat session and send them an OTP. We store the OTP in the newly created userData object within botData.
     - We use NodeMailer to handle the email sending via Gmail to be certain that the mail will end up in their primary inbox. Given [Gmail's daily sending limits](https://support.google.com/a/answer/166852?hl=en), you may want to replace this with a bulk mailer like Amazon SES if your bot is very popular.
 2. We allow the user to engage with the bot **without** first confirming the OTP. The user can later type in the 4 digit OTP at _any_ time and we verify their account. This can help greatly reduce dropouts.
-3. If you wish, you can include an expiry time for the OTP. If using an expiry time, you will want to prompt the user for their OTP before the expiry or change 2 so that you wait on OTP confirmation before letting them continue with the session.
+3. If you wish, you can include an expiry time for the OTP. If using an expiry time, you will want to prompt the user for their OTP before the expiry or change the flow above so that you wait on OTP confirmation before letting them continue with the session.
+
+## Sample Email
 
 ![OTP Email Sample](otp_email.png)
+_Sample email sent by NodeMailer_
 
 # Frontend Code
 None! That's the whole point :-).
