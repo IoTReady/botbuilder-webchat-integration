@@ -1,8 +1,7 @@
 /* 
-Generating token is asynchronous process so we have to use Callback here.
-Expiry time for the token provided is 30 minutes.
-Stop the token to get refreshed every time you refresh within the time limit.
-Generating token if it gets expired.
+Generating token is asynchronous process so we have to use a callback here.
+The default expiry time for Direct Line tokens is 30 minutes. We store them and track this expiry time to avoid needlessly refreshing the token (and resetting the conversation).
+If the token has expired, we ask for a fresh one.
 */
 
 function generateToken(userId, callback) {

@@ -7,17 +7,17 @@ Code and instructions for integrating Microsoft Azure Botbuilder (Botframework) 
 
 ## [Theme integration - Make the webchat fit your website](website_theming/README.md)
 
-## User experience
+## [User experience](user_experience/README.md)
 
-### Remembering the user
+### [Remembering the user](user_experience/remember_user/README.md)
 
-### Authenticating the user in-chat 
+### [Authenticating the user in-chat](user_experience/authenticate_in_chat/README.md)
 
 Happy Botting!
 
 # Credits
 
-Built with love in Bangalore by [Jaaga Labs](http://jaaga.in/labs)
+Built with 🧡 in Bangalore by [Jaaga Labs](http://jaaga.in/labs) - get in touch to build an engaging text and voice based bot experience for your customers. Connect with us on [labs@jaaga.in](mailto:labs@jaaga.in) or on [LinkedIn](https://www.linkedin.com/company/jaaga-labs/).
 
 ## Author
 
