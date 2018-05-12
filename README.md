@@ -3,9 +3,9 @@ Code and instructions for integrating Microsoft Azure Botbuilder (Botframework) 
 
 # Sections
 
-## Security - Generating tokens using Azure Functions
+## [Security - Generating tokens using Azure Functions](security/README.md)
 
-## Theme integration - Make the webchat fit your website
+## [Theme integration - Make the webchat fit your website](website_theming/README.md)
 
 ## User experience
 
@@ -21,8 +21,8 @@ Built with love in Bangalore by [Jaaga Labs](http://jaaga.in/labs)
 
 ## Author
 
-[Vipin Saini]
+[Vipin Saini](https://www.linkedin.com/in/vipin-saini-76a76765/)
 
 ## Editor
 
-[Tej Pochiraju]
+[Tej Pochiraju](https://www.linkedin.com/in/tejpochiraju/)
