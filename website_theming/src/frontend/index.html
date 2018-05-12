@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>chat bot</title>
+
+    <!-- CDN for styling -->
+    <link href="https://cdn.botframework.com/botframework-webchat/latest/botchat.css" rel="stylesheet" />
+
+    <!-- JQuery -->
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+
+    <style>
+        #BotChatGoesHere {
+            display: none;
+            height: 550px;
+            width: 400px;
+            border: 1px solid whitesmoke;
+            box-shadow: rgba(0, 0, 0, 0) 0px 3px 12px;
+            position: fixed;
+            padding: 0px;
+            top: auto;
+            overflow: auto;
+            background: white;
+            bottom: 70pt;
+            left: 15pt;
+            z-index: 2147483646;
+        }
+
+        .floatingBtn {
+            background: none;
+            border-radius: 50%;
+            bottom: 18pt;
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 12px;
+            height: 45pt;
+            padding: 0px;
+            position: fixed;
+            left: 20pt;
+            top: auto;
+            width: 45pt;
+            z-index: 200;
+            cursor: pointer;
+        }
+
+        .closeButton {
+            border: none;
+            float: right;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            background-color: #2c214a !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="BotChatGoesHere"></div>
+    <div id="floatBtn">
+        <img src='https://dara.network/wp-content/uploads/2018/04/bg-spinner.gif' alt="logo" class="floatingBtn">
+    </div>
+    <!-- Javascript CDN  -->
+    <script src="https://cdn.botframework.com/botframework-webchat/latest/botchat.js">
+    </script>
+
+    <script>
+        // generating uuid
+        function uuid(a, b) {
+            for (b = a = ''; a++ < 36; b += a * 51 & 52 ? (a ^ 15 ? 8 ^ Math.random() * (a ^ 20 ? 16 : 4) : 4).toString(
+                    16) : '-');
+            return b
+        }
+
+        // variable declaration
+        let uid = uuid();
+        const params = {};
+        var flag = false;
+        var btnStatus = false;
+        var key = {};
+        var timeout = 0;
+        var botConnection;
+
+        const user = {
+            id: params['userid'] || "abc",
+            name: params['username'] || "Mr.abc"
+        };
+        const bot = {
+            id: params['botid'],
+            name: params['botname']
+        };
+
+        // API call for generating token
+        function generateToken(userId, callback) {
+            try {
+                var url = 'https://daraartbot-functions.azurewebsites.net/api/webChatToken?uid=' + userId;
+                fetch(url)
+                    .then(resp => resp.json())
+                    .then(data => {
+                        if (!data) {
+                            callback(error, null);
+                        } else {
+
+                            var currentTime = Math.floor(new Date().getTime() / 1000);
+
+                            if (localStorage.getItem('tokenTime')) {
+                                // geting token from local storage
+                                timeout = localStorage.getItem('tokenTime');
+                            }
+
+                            var expireTime = currentTime - timeout;
+
+                            if (expireTime > 1740) {
+                                var tokenTime = Math.floor(new Date().getTime() / 1000);
+                                token = data.token;
+                                localStorage.setItem('tokenTime', tokenTime);
+                            } else if (localStorage.getItem("tokenId")) {
+                                token = localStorage.getItem("tokenId");
+                            } else {
+                                token = data.token;
+                            }
+
+                            botConnection = new BotChat.DirectLine({
+                                domain: params['domain'],
+                                token: token,
+                                webSocket: params['webSocket'] && params['webSocket'] === 'false' // defaults to true
+                            });
+
+                            // setting local storage
+                            localStorage.setItem("tokenId", token);
+
+                            return callback(null, token);
+                        }
+                    })
+                    .catch(err => console.error(err));
+            } catch (err) {
+                alert(err);
+                console.error(err);
+            }
+        }
+
+        function changeHeader(newColor) {
+            document.querySelector('.wc-header span').innerText = 'Creative Bot'
+            document.querySelector('.wc-header').style.background = '#2c214a';
+        }
+
+        function displayChatIcon(uid) {
+            generateToken(uid, (err, status) => {
+                if (err) {
+                    console.error("Token is not generated");
+                    alert(error);
+                } else {
+                    document.querySelector('.floatingBtn').src =
+                        'https://dara.network/wp-content/uploads/2018/03/dara_smirk_trans_circle.png';
+                    document.body.style.cursor = 'auto';
+                }
+            })
+        }
+        // To toggle web chat window
+        $(document).ready(function () {
+            $("#floatBtn").click(function () {
+                toggleFunc();
+            });
+        });
+
+        function toggleFunc() {
+            $("#BotChatGoesHere").animate({
+                width: "toggle"
+            }, () => {
+
+                if (flag == false) {
+                    if ($("#BotChatGoesHere").is(":hidden") == false) {
+                        //    generateToken(uid);
+                        startConversation();
+
+                        var r = $('<div class="closeButton" id="closeButton">X</div>');
+                        $('.wc-header').append(r);
+
+                        $('.wc-header span').html('Dara Art Bot');
+                        $('.wc-header').css('background-color', '#2c214a');
+
+                        if ($('.wc-message-content')) {
+                            $('.wc-message-content').css('backgroundColor', '#2c214a');
+                        }
+
+                        $(document).ready(function () {
+                            $("#closeButton").click(function () {
+                                $("#BotChatGoesHere").animate({
+                                    width: "toggle"
+                                });
+                            });
+                        });
+
+                    }
+                }
+            });
+        }
+
+        function startConversation() {
+            flag = true;
+
+            BotChat.App({
+                bot: bot,
+                botConnection: botConnection,
+                user: user
+            }, document.getElementById('BotChatGoesHere'));
+
+            // console.log('bot connection', botConnection);
+            if (botConnection.connectionStatus$) {
+                document.querySelector('.floatingBtn').style.cursor = 'pointer';
+            }
+        }
+
+        displayChatIcon(uid);
+    </script>
+
+</body>
+
+</html>
