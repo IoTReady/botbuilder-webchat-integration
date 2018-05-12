@@ -1,6 +1,10 @@
 # botbuilder-webchat-integration
 Code and instructions for integrating Microsoft Azure Botbuilder (Botframework) webchat into your website. Includes steps to enhance and secure the user experience. Check out the results at http://dara.network.
 
+## Screenshots
+![Desktop View of Webchat](desktop_webchat.png)
+![Mobile View of Webchat](mobile_webchat.png)
+
 # Sections
 
 ## [Security - Generating tokens using Azure Functions](security/README.md)
