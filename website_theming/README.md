@@ -21,5 +21,3 @@ Because the token can sometimes take upwards of 15 seconds to load, you will wan
 
 ![Spinner Loading Indicator](bg-spinner.gif)
 
-
-
