@@ -17,7 +17,7 @@ Happy Botting!
 
 # Credits
 
-Built with love in Bangalore by [Jaaga Labs](http://jaaga.in/labs)
+Built with 🧡 in Bangalore by [Jaaga Labs](http://jaaga.in/labs) - get in touch to build an engaging text and voice based bot experience for your customers. Connect with us on [labs@jaaga.in](mailto:labs@jaaga.in) or on [LinkedIn](https://www.linkedin.com/company/jaaga-labs/).
 
 ## Author
 
