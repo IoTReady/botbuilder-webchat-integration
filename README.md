@@ -7,11 +7,11 @@ Code and instructions for integrating Microsoft Azure Botbuilder (Botframework) 
 
 ## [Theme integration - Make the webchat fit your website](website_theming/README.md)
 
-## User experience
+## [User experience](user_experience/README.md)
 
-### Remembering the user
+### [Remembering the user](user_experience/remember_user/README.md)
 
-### Authenticating the user in-chat 
+### [Authenticating the user in-chat](user_experience/authenticate_in_chat/README.md)
 
 Happy Botting!
 
