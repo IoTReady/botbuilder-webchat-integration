@@ -1,0 +1,14 @@
+{
+  "name": "web-chat-token",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "request": "^2.85.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tej Pochiraju",
+  "license": "ISC"
+}
