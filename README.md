@@ -3,7 +3,7 @@ Code and instructions for integrating Microsoft Azure Botbuilder (Botframework) 
 
 ## Screenshots
 ![Desktop View of Webchat](desktop_webchat.png)
-![Mobile View of Webchat](mobile_webchat.png)
+![Mobile View of Webchat](mobile_webchat.jpeg)
 
 # Sections
 
